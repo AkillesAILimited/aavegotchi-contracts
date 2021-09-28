@@ -236,11 +236,9 @@ struct AppStorage {
     mapping(uint256 => address[]) hauntCollateralTypes;
     // itemTypeId => (sideview => Dimensions)
     mapping(uint256 => mapping(bytes => Dimensions)) sideViewDimensions;
-    // itemTypeId => (slotPosition => exception Bool)
- 
     mapping(address => mapping(address => bool)) petOperators; //Pet operators for a token
-    
-       mapping(uint256 => mapping(uint256 => bool)) isAnException;
+    // itemTypeId => (slotPosition => exception Bool)
+    mapping(uint256 => mapping(uint256 => bool)) isAnException;
 
 }
 
