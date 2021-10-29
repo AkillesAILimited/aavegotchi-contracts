@@ -305,7 +305,8 @@ contract SvgViewsFacet is Modifiers {
             svg_ = abi.encodePacked(svg_, layers.eyes, layers.head);
             if (!pet) svg_ = abi.encodePacked(svg_, layers.pet);
         } else {
-            svg_ = abi.encodePacked(svg_, _body, layers.bodyWearable, layers.face, layers.eyes, layers.head);
+            svg_ = abi.encodePacked(svg_, _body, layers.bodyWearable);
+            svg_ = abi.encodePacked(svg_, layers.face, layers.eyes, layers.head);
             if (side == left) {
                 if (leftHand) {
                     svg_ = abi.encodePacked(svg_, layers.hands, layers.handLeft);
