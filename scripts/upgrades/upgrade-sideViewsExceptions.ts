@@ -13,7 +13,7 @@ export async function upgrade() {
     {
       facetName: "SvgViewsFacet",
       addSelectors: [
-        "function setSideViewExceptions(SideViewExceptions[] calldata _sideViewExceptions) external",
+        `function setSideViewExceptions(tuple(uint256 _itemId,uint256 _slotPosition,bool _exceptionBool)[] _sideViewExceptions) external`,
       ],
       removeSelectors: [],
     },

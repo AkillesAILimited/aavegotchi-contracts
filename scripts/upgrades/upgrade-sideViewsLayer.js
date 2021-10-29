@@ -3,7 +3,7 @@
 
 const { LedgerSigner } = require("@ethersproject/hardware-wallets");
 
-const { sendToMultisig } = require("../libraries/multisig/multisig.js");
+// const { sendToMultisig } = require("../libraries/multisig/multisig.js");
 
 const { aavegotchiSvgs } = require("../../svgs/aavegotchi-side.js");
 
@@ -65,12 +65,14 @@ async function main() {
   console.log("Deployed facet:", svgViewsFacet.address);
 
   const newFuncs = [
-    getSelector('function setSideViewExceptions(SideViewExceptions[] calldata _sideViewExceptions) external onlyItemManager')
-  ]
+    getSelector(
+      "function setSideViewExceptions(tuple(uint256 _itemId,uint256 _slotPosition,bool _exceptionBool)[] _sideViewExceptions) external"
+    ),
+  ];
 
   let existingFuncs = getSelectors(svgViewsFacet);
   for (const selector of newFuncs) {
-    if(!existingFuncs.includes(selector)) {
+    if (!existingFuncs.includes(selector)) {
       throw Error(`Selector ${selector} not found`);
     }
   }
@@ -87,7 +89,7 @@ async function main() {
       facetAddress: svgViewsFacet.address,
       action: FacetCutAction.Remove,
       functionSelectors: existingFuncs,
-    }
+    },
   ];
   console.log(cut);
 
@@ -115,7 +117,6 @@ async function main() {
     );
     await sendToMultisig(process.env.DIAMOND_UPGRADER, signer, tx);
   }
-
 }
 
 if (require.main === module) {
