@@ -14,6 +14,12 @@ interface Dimensions {
   height: BigNumberish;
 }
 
+export interface Exceptions {
+  itemId: BigNumberish;
+  slotPosition: BigNumberish;
+  exceptionBool: boolean;
+}
+
 export interface ItemTypeInput {
   name: string;
   description: string;

@@ -183,12 +183,12 @@ async function main() {
   const rightHandExceptions = [
     {
       itemId: 201,
-      side: 4,
+      slotPosition: 4,
       exceptionBool: true,
     },
     {
       itemId: 217,
-      side: 4,
+      slotPosition: 4,
       exceptionBool: true,
     },
   ];
@@ -196,12 +196,12 @@ async function main() {
   const leftHandExceptions = [
     {
       itemId: 201,
-      side: 5,
+      slotPosition: 5,
       exceptionBool: true,
     },
     {
       itemId: 217,
-      side: 5,
+      slotPosition: 5,
       exceptionBool: true,
     },
   ];
